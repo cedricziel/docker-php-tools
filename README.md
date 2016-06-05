@@ -1,2 +1,18 @@
 # docker-php-tools
-Base Image for testing PHP applications with additional tools installed
+
+Base Image for testing PHP applications with additional tools installed.
+
+## Installed Tools
+
+### Build
+
+* ant
+
+### Documentation
+
+* pandoc
+* texlive
+
+## License
+
+MIT License
