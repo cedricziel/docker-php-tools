@@ -2,6 +2,11 @@
 
 Base Image for testing PHP applications with additional tools installed.
 
+## Pre-installed PHP extensions
+
+* xsl
+* zip
+
 ## Installed Tools
 
 ### Build
