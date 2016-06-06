@@ -19,7 +19,18 @@ RUN mkdir -p /opt/composer \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && chmod +x /opt/composer/composer.phar
-    && ln -s /opt/composer/composer.phar /opt/bin/composer
+    && ln -s /opt/composer/composer.phar /opt/bin/composer \
+    && popd
 
 # Expand path to opt
 ENV PATH /opt/bin:$PATH
+
+# Disable interactive prompts with gcloud
+ENV CLOUDSDK_CORE_DISABLE_PROMPTS 1
+
+# Install Google Cloud SDK
+RUN export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)" \
+    && echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
+    && sudo apt-get update -qq \
+    && sudo apt-get install -y -qq google-cloud-sdk

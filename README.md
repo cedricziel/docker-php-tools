@@ -26,6 +26,7 @@ Base Image for testing PHP applications with additional tools installed.
 ### Packages
 
 * libxslt-dev
+* Google Cloud SDK
 
 ### Version control
 
