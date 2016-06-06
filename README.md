@@ -4,6 +4,7 @@ Base Image for testing PHP applications with additional tools installed.
 
 ## Pre-installed PHP extensions
 
+* xdebug
 * xsl
 * zip
 
@@ -12,6 +13,10 @@ Base Image for testing PHP applications with additional tools installed.
 ### Build
 
 * ant
+
+### Dependency Management
+
+* composer
 
 ### Documentation
 
