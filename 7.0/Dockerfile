@@ -29,8 +29,8 @@ ENV PATH /opt/bin:$PATH
 ENV CLOUDSDK_CORE_DISABLE_PROMPTS 1
 
 # Install Google Cloud SDK
-RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | sudo tee /etc/apt/sources.list.d/google-cloud-sdk.list \
-    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add - \
-    && sudo apt-get update -qq \
-    && sudo apt-get install -y -qq google-cloud-sdk \
+RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+    && apt-get update -qq \
+    && apt-get install -y -qq google-cloud-sdk \
     && rm -rf /var/lib/apt/lists/*
