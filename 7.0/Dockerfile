@@ -17,9 +17,9 @@ RUN docker-php-ext-enable xdebug
 RUN mkdir -p /opt/composer \
     && mkdir -p /opt/bin \
     && cd /opt/composer \
-    && php -r "copy('https://composer.github.io/installer.sig', 'composer-installer.sig')" \
+    && php -r "copy('https://composer.github.io/installer.sig', 'composer-installer.sig');" \
     && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
-    && php -r "$sig = file_get_contents('composer-installer.sig'); if (hash_file('SHA384', 'composer-setup.php') === trim($sig)) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
+    && php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('./composer-installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
     && chmod +x /opt/composer/composer.phar \
