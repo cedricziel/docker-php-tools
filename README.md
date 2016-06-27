@@ -7,6 +7,12 @@ Base Image for testing PHP applications with additional tools installed.
 * xdebug
 * xsl
 * zip
+* iconv
+* mcrypt
+* pdo_mysql
+* exif
+* pcntl
+* gd
 
 ## Installed Tools
 
