@@ -2,6 +2,8 @@
 
 Base Image for testing PHP applications with additional tools installed.
 
+[The image on docker hub](https://hub.docker.com/r/cedricziel/docker-php-tools/)
+
 ## Pre-installed PHP extensions
 
 * xdebug
