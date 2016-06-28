@@ -1,7 +1,7 @@
 FROM php:7.0
 
 RUN apt-get update -qq \
-    && apt-get install -y -qq git wget pandoc ant texlive-fonts-recommended \
+    && apt-get install -y -qq git wget pandoc ant ant-contrib ant-optional texlive-fonts-recommended \
        libxslt-dev libzip-dev texlive-latex-recommended \
        libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev \
     && rm -rf /var/lib/apt/lists/*
