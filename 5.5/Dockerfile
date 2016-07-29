@@ -1,5 +1,9 @@
 FROM php:5.5
 
+ENV DOCKER_BUCKET get.docker.com
+ENV DOCKER_VERSION 1.12.0
+ENV DOCKER_SHA256 3dd07f65ea4a7b4c8829f311ab0213bca9ac551b5b24706f3e79a97e22097f8b
+
 RUN apt-get update -qq \
     && apt-get install -y -qq git wget pandoc ant ant-contrib ant-optional texlive-fonts-recommended \
        libxslt-dev libzip-dev texlive-latex-recommended \
@@ -39,3 +43,13 @@ RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee 
     && apt-get update -qq \
     && apt-get install -y -qq google-cloud-sdk \
     && rm -rf /var/lib/apt/lists/*
+
+# Install docker binaries
+RUN set -x \
+	&& curl -fSL "https://${DOCKER_BUCKET}/builds/Linux/x86_64/docker-$DOCKER_VERSION.tgz" -o docker.tgz \
+	&& echo "${DOCKER_SHA256} *docker.tgz" | sha256sum -c - \
+	&& tar -xzvf docker.tgz \
+	&& mv docker/* /usr/local/bin/ \
+	&& rmdir docker \
+	&& rm docker.tgz \
+	&& docker -v
