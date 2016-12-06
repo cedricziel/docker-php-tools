@@ -1,4 +1,6 @@
 FROM cedricziel/docker-php-tools:7.0
+
+ENV DEBIAN_FRONTEND noninteractive
   
 # Install xvfb from scratch
 RUN apt-get purge -y wkhtmltopdf && apt-get update && apt-get install -y build-essential xorg \
